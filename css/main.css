@@ -276,11 +276,13 @@ h6 {
 p {
   margin: 0 0 20px 0;
 }
+article a {
+  color: #4183c4;
+}
 a {
-  color: #555;
+  color: #333;
   text-decoration: none;
   outline: none;
-  border-bottom: 1px solid #999;
   word-wrap: break-word;
 }
 a:hover {
@@ -487,8 +489,9 @@ pre,
   margin: 20px 0;
   padding: 0;
   font-size: 13px;
-  color: #4d4d4c;
-  background: #f7f7f7;
+  color: #000;
+  color: #333;
+  background-color: #f2f2f2;
   line-height: 1.6;
 }
 pre,
@@ -508,7 +511,7 @@ pre {
 }
 pre code {
   padding: 0;
-  color: #4d4d4c;
+  color: #000;
   background: none;
   text-shadow: none;
 }
@@ -531,7 +534,7 @@ pre code {
 }
 .highlight figcaption {
   font-size: 1em;
-  color: #4d4d4c;
+  color: #000;
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -545,23 +548,23 @@ pre code {
 }
 .highlight figcaption a {
   float: right;
-  color: #4d4d4c;
+  color: #000;
 }
 .highlight figcaption a:hover {
-  border-bottom-color: #4d4d4c;
+  border-bottom-color: #000;
 }
 .highlight .gutter pre {
   padding-left: 10px;
   padding-right: 10px;
-  color: #869194;
+  color: #999;
   text-align: right;
-  background-color: #eff2f3;
+  background-color: #1b1b1b;
 }
 .highlight .code pre {
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #f7f7f7;
+  background-color: #2d2d2d;
 }
 .highlight .line {
   height: 20px;
@@ -579,16 +582,16 @@ pre code {
   border: none;
 }
 pre .deletion {
-  background: #fdd;
+  background: #008000;
 }
 pre .addition {
-  background: #dfd;
+  background: #800000;
 }
 pre .meta {
-  color: #8959a8;
+  color: #c9c;
 }
 pre .comment {
-  color: #8e908c;
+  color: #999;
 }
 pre .variable,
 pre .attribute,
@@ -602,7 +605,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #c82829;
+  color: #f2777a;
 }
 pre .number,
 pre .preprocessor,
@@ -611,7 +614,7 @@ pre .literal,
 pre .params,
 pre .constant,
 pre .command {
-  color: #f5871f;
+  color: #f99157;
 }
 pre .ruby .class .title,
 pre .css .rules .attribute,
@@ -624,11 +627,11 @@ pre .xml .cdata,
 pre .special,
 pre .number,
 pre .formula {
-  color: #718c00;
+  color: #9c9;
 }
 pre .title,
 pre .css .hexcolor {
-  color: #3e999f;
+  color: #6cc;
 }
 pre .function,
 pre .python .decorator,
@@ -638,11 +641,11 @@ pre .ruby .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
 pre .coffeescript .title {
-  color: #4271ae;
+  color: #69c;
 }
 pre .keyword,
 pre .javascript .function {
-  color: #8959a8;
+  color: #c9c;
 }
 .full-image.full-image.full-image.full-image {
   border: none;
@@ -1091,6 +1094,9 @@ pre .javascript .function {
 }
 .header {
   background: transparent;
+  background-image: url("http://hbfile.b0.upaiyun.com/img/home/banner/3db6fa2fb1793fb3c2a1761e637f7c6863833884ad02b");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 .header-inner {
   position: relative;
@@ -1113,7 +1119,7 @@ pre .javascript .function {
   display: inline-block;
   padding: 0 40px;
   color: #fff;
-  background: #222;
+  background: none;
   border-bottom: none;
 }
 .brand:hover {
@@ -1188,6 +1194,7 @@ pre .javascript .function {
   margin-top: 20px;
   padding-left: 0;
   text-align: center;
+  background: rgba(255,255,255,0.65);
 }
 .menu .menu-item {
   display: inline-block;
@@ -1323,7 +1330,7 @@ pre .javascript .function {
   visibility: visible;
 }
 .posts-expand .post-body ul li {
-  list-style: circle;
+  list-style: list-item;
 }
 .posts-expand .post-body img {
   box-sizing: border-box;
@@ -1822,7 +1829,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #20ff82;
+  background: #0bccc4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2659,4 +2666,10 @@ embed {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
+}
+.posts-expand .post-meta {
+  margin-bottom: 30px;
+}
+.site-title {
+  font-family: 'Lobster Two', 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
