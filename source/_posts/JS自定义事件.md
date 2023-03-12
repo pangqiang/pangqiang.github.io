@@ -5,4 +5,17 @@ index_img: https://rmt.dogedoge.com/fetch/fluid/storage/hello-fluid/cover.png?w=
 tags: JS
 ---
 ### JS 发布订阅模式实现
+```
+// add an appropriate event listener
+obj.addEventListener("cat", function(e) { e.detail });
+
+// create and dispatch the event
+var event = new CustomEvent("cat", {
+  detail: {
+    hazcheeseburger: true
+  }
+});
+obj.dispatchEvent(event);
+
+```
 
