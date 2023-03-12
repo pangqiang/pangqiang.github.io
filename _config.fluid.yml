@@ -347,7 +347,7 @@ navbar:
   menu:
     - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
     - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
-    - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
+    # - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
@@ -465,7 +465,7 @@ index:
   # 头图高度，屏幕百分比
   # Height ratio of banner image
   # Available: 0 - 100
-  banner_img_height: 40
+  banner_img_height: 80
 
   # 头图黑色蒙版的不透明度，available: 0 - 1.0， 1 是完全不透明
   # Opacity of the banner mask, 1.0 is completely opaque
@@ -533,7 +533,7 @@ index:
 #---------------------------
 post:
   banner_img: /img/default.png
-  banner_img_height: 40
+  banner_img_height: 80
   banner_mask_alpha: 0.3
 
   # 文章在首页的默认封面图，当没有指定 index_img 时会使用该图片，若两者都为空则不显示任何图片
@@ -887,7 +887,7 @@ giscus:
 #---------------------------
 archive:
   banner_img: /img/default.png
-  banner_img_height: 40
+  banner_img_height: 80
   banner_mask_alpha: 0.3
 
 
@@ -896,9 +896,9 @@ archive:
 # Category Page
 #---------------------------
 category:
-  enable: true
+  enable: false
   banner_img: /img/default.png
-  banner_img_height: 40
+  banner_img_height: 80
   banner_mask_alpha: 0.3
 
   # 分类的排序字段，前面带减号是倒序，不带减号是正序
@@ -927,7 +927,7 @@ category:
 tag:
   enable: true
   banner_img: /img/default.png
-  banner_img_height: 40
+  banner_img_height: 80
   banner_mask_alpha: 0.3
   tagcloud:
     min_font: 15
@@ -944,7 +944,7 @@ tag:
 about:
   enable: true
   banner_img: /img/default.png
-  banner_img_height: 40
+  banner_img_height: 80
   banner_mask_alpha: 0.3
   avatar: /img/avatar.png
   name: "Fluid"
@@ -966,7 +966,7 @@ about:
 #---------------------------
 page:
   banner_img: /img/default.png
-  banner_img_height: 40
+  banner_img_height: 80
   banner_mask_alpha: 0.3
 
 
