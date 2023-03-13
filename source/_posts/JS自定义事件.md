@@ -4,7 +4,8 @@ date: 2022-11-26 13:21:38
 tags: JS
 ---
 ### JS 发布订阅模式实现
-```
+
+``` js
 // add an appropriate event listener
 obj.addEventListener("cat", function(e) { e.detail });
 
