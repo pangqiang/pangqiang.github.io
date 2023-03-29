@@ -1,0 +1,14 @@
+body{
+  background: url('../img/bg.jpg');
+  background-attachment: fixed 
+}
+.full-bg-img .mask{
+  background-color:transparent
+  
+}
+#navbar{
+  background: rgb(169 155 164);
+}
+.banner-text{
+color: inherit;
+}
