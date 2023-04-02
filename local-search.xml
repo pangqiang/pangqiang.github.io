@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>本地调试element-plus源码正确方式</title>
+    <link href="/2023/04/02/%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95element-plus%E6%BA%90%E7%A0%81%E6%AD%A3%E7%A1%AE%E6%96%B9%E5%BC%8F/"/>
+    <url>/2023/04/02/%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95element-plus%E6%BA%90%E7%A0%81%E6%AD%A3%E7%A1%AE%E6%96%B9%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<h2 id="本地调试-element-plus-的源码，可以按照以下步骤进行"><a href="#本地调试-element-plus-的源码，可以按照以下步骤进行" class="headerlink" title="本地调试 element-plus 的源码，可以按照以下步骤进行"></a>本地调试 element-plus 的源码，可以按照以下步骤进行</h2><h3 id="element-plus使用-yarn-和-pnpm-管理代码，已安装，直接执行第三步。未安装-请先安装yarn-和-pnpm"><a href="#element-plus使用-yarn-和-pnpm-管理代码，已安装，直接执行第三步。未安装-请先安装yarn-和-pnpm" class="headerlink" title="element-plus使用 yarn 和 pnpm 管理代码，已安装，直接执行第三步。未安装, 请先安装yarn 和 pnpm"></a>element-plus使用 yarn 和 pnpm 管理代码，已安装，直接执行第三步。未安装, 请先安装yarn 和 pnpm</h3><h3 id="1-安装-yarn"><a href="#1-安装-yarn" class="headerlink" title="1. 安装 yarn"></a>1. 安装 yarn</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g yarn<br></code></pre></td></tr></table></figure><h3 id="2-安装-pnpm"><a href="#2-安装-pnpm" class="headerlink" title="2. 安装 pnpm"></a>2. 安装 pnpm</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g pnpm<br></code></pre></td></tr></table></figure><h3 id="3-准备调试"><a href="#3-准备调试" class="headerlink" title="3. 准备调试"></a>3. 准备调试</h3><p>在控制台执行如下步骤</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> &lt;https://github.com/element-plus/element-plus.git&gt;<br><span class="hljs-built_in">cd</span> element-plus<br>pnpm install<br>yarn dev<br><br></code></pre></td></tr></table></figure><h3 id="4-浏览器打开已启动的本地服务"><a href="#4-浏览器打开已启动的本地服务" class="headerlink" title="4. 浏览器打开已启动的本地服务"></a>4. 浏览器打开已启动的本地服务</h3><p><img src="/../img/element-run.png" alt="alt text"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>坑</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>递归遍历菜单结构</title>
     <link href="/2023/04/01/%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86%E8%8F%9C%E5%8D%95%E7%BB%93%E6%9E%84/"/>
     <url>/2023/04/01/%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86%E8%8F%9C%E5%8D%95%E7%BB%93%E6%9E%84/</url>
