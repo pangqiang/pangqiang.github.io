@@ -1,8 +1,11 @@
 body{
-  background: url('../img/bg.jpg');
-  background-attachment: fixed 
+  width: 100%;
+  background: url('../img/bg3-l.jpg');
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  
 }
-.full-bg-img .mask{
+/* .full-bg-img .mask{
   background-color:transparent
   
 }
@@ -11,4 +14,4 @@ body{
 }
 .banner-text{
 color: inherit;
-}
+} */
