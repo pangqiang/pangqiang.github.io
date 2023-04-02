@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        派大星
+    </title>
+    <meta name="description" content= 嘿，我是派大星，欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,刘训灼,LiuXunzhuo >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            基础算法-滑动窗口
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h2 id="滑动窗口的经典题目"><a href="#滑动窗口的经典题目" class="headerlink" title="滑动窗口的经典题目"></a>滑动窗口的经典题目</h2><h3 id="滑动窗口是一种常用的算法思想，常用于解决一些与连续区间相关的问题。下面是两道经典的滑动窗口题目’"><a href="#滑动窗口是一种常用的算法思想，常用于解决一些与连续区间相关的问题。下面是两道经典的滑动窗口题目’" class="headerlink" title="滑动窗口是一种常用的算法思想，常用于解决一些与连续区间相关的问题。下面是两道经典的滑动窗口题目’"></a>滑动窗口是一种常用的算法思想，常用于解决一些与连续区间相关的问题。下面是两道经典的滑动窗口题目’</h3><h4 id="1-长度最小的子数组"><a href="#1-长度最小的子数组" class="headerlink" title="1. 长度最小的子数组"></a>1. 长度最小的子数组</h4><p>  给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的连续子数组。如果不存在符合条件的连续子数组，返回 0。</p>
+<p>  示例：</p>
+<p>  输入：s &#x3D; 7, nums &#x3D; [2,3,1,2,4,3]<br>  输出：2<br>  解释：子数组 [4,3] 是该条件下的长度最小的连续子数组。</p>
+<p>  解题思路：</p>
+<p>  维护一个滑动窗口，记录窗口左右端点的位置 left 和 right。初始化 left &#x3D; right &#x3D; 0，sum &#x3D; 0，用 sum 记录窗口中元素的和。然后不断移动右端点，直到窗口中元素的和大于等于 s。此时记录一下窗口的长度，然后移动左端点，缩小窗口的范围，直到窗口中元素的和小于 s。这个过程中不断更新窗口的长度，最后输出最小的长度即可。</p>
+<p>  代码实现</p>
+<pre><code>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">minSubArrayLen</span>(<span class="params">s, nums</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>, right = <span class="number">0</span>; sum = <span class="number">0</span>, ans = <span class="title class_">Infinity</span>;</span><br><span class="line">  <span class="keyword">const</span> len = nums.<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">    sum += nums[right];</span><br><span class="line">    <span class="comment">// 取最小值过程</span></span><br><span class="line">    <span class="keyword">while</span> (sum &gt;= s) &#123;</span><br><span class="line">      ans = <span class="title class_">Math</span>.<span class="title function_">min</span>(ans, right - left + <span class="number">1</span>);</span><br><span class="line">      sum -= nums[left];</span><br><span class="line">      left++;</span><br><span class="line">    &#125;</span><br><span class="line">    right++</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (ans === <span class="title class_">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h4 id="2-最长连续递增序列"><a href="#2-最长连续递增序列" class="headerlink" title="2.  最长连续递增序列"></a>2.  最长连续递增序列</h4><p>  给定一个未经排序的整数数组，找到最长的连续递增序列（子数组）的长度。</p>
+<p>  示例：</p>
+<p>  输入: [1,3,5,4,7]<br>  输出: 3<br>  解释: 最长连续递增序列是 [1,3,5], 长度为3。</p>
+<p>  解题思路：</p>
+<p>  维护一个滑动窗口，记录窗口左右端点的位置 left 和 right。初始化 left &#x3D; right &#x3D; 0，max_len &#x3D; 1，用 max_len 记录最长连续递增序列的长度。然后不断移动右端点，如果当前元素比前一个元素大，说明当前元素可以加入到递增序列中，此时更新 max_len。如果当前元素比前一个元素小，说明递增序列已经断开，更新 left 的位置为 right，重新开始寻找递增序列。</p>
+<p>  代码实现</p>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">findLengthOfLCIS</span>(<span class="params">nums</span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> len = nums.<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>,right = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> max_len = <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span>( right&lt;len )&#123;</span><br><span class="line">    <span class="keyword">if</span>(right&gt;<span class="number">0</span> &amp;&amp; nums[right] &gt; nums[right-<span class="number">1</span>])&#123;</span><br><span class="line">      max_len = <span class="title function_">max</span>(max_len, right - left + <span class="number">1</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      left = right</span><br><span class="line">      right += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> max_len</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h4 id="3-最多颜色的车辆"><a href="#3-最多颜色的车辆" class="headerlink" title="3. 最多颜色的车辆"></a>3. 最多颜色的车辆</h4><p>  题目描述<br>  在一个狭小的路口，每秒只能通过一辆车，假设车辆的颜色只有 3 种，找出 N 秒内经过的最多颜色的车辆数量。</p>
+<p>  三种颜色编号为0 ，1 ，2</p>
+<p>  输入描述<br>  第一行输入的是通过的车辆颜色信息<br>  [0,1,1,2] 代表4 秒钟通过的车辆颜色分别是 0 , 1 , 1 , 2</p>
+<p>  第二行输入的是统计时间窗，整型，单位为秒</p>
+<p>  输出描述<br>  输出指定时间窗内经过的最多颜色的车辆数量。</p>
+<p>  输入<br>  0 1 2 1<br>  3</p>
+<p>  输出 2</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> _arr = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line"><span class="keyword">const</span> t = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">carNums</span>(<span class="params"> arr,n</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>; </span><br><span class="line">  <span class="keyword">let</span> r = l + n;</span><br><span class="line">  <span class="keyword">let</span> max_0_t = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> max_1_t = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> max_2_t = <span class="number">0</span></span><br><span class="line">  <span class="keyword">const</span> len = arr.<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">while</span>( r &lt;= len )&#123;</span><br><span class="line">    <span class="keyword">const</span> temp = arr.<span class="title function_">slice</span>(l,r)</span><br><span class="line">    <span class="keyword">let</span> map = &#123;</span><br><span class="line">      <span class="string">&#x27;0&#x27;</span>:<span class="number">0</span>,</span><br><span class="line">      <span class="string">&#x27;1&#x27;</span>:<span class="number">0</span>,</span><br><span class="line">      <span class="string">&#x27;2&#x27;</span>:<span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i= <span class="number">0</span>; i &lt; temp.<span class="property">length</span>; i++)&#123;</span><br><span class="line">      <span class="keyword">const</span> item = temp[i];</span><br><span class="line">      <span class="keyword">if</span>( item === <span class="number">0</span> )&#123;</span><br><span class="line">        map[<span class="string">&#x27;0&#x27;</span>] ++ </span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>( item === <span class="number">1</span> )&#123;</span><br><span class="line">        map[<span class="string">&#x27;1&#x27;</span>] ++ </span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>( item === <span class="number">2</span> )&#123;</span><br><span class="line">        map[<span class="string">&#x27;2&#x27;</span>] ++ </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    max_0_t = <span class="title class_">Math</span>.<span class="title function_">max</span>(map[<span class="number">0</span>],max_0_t);</span><br><span class="line">    max_1_t = <span class="title class_">Math</span>.<span class="title function_">max</span>(map[<span class="number">1</span>],max_1_t);</span><br><span class="line">    max_2_t = <span class="title class_">Math</span>.<span class="title function_">max</span>(map[<span class="number">2</span>],max_2_t);</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">    l ++ </span><br><span class="line">    r= l + n</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">max</span>(max_0_t,max_1_t,max_2_t)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( <span class="title function_">carNums</span>(_arr,t)); <span class="comment">// </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>滑动窗口算法，核心是要写出窗口左右移动的条件</p>
+
+    </div>
+
+    
+        <hr class="fhr">
+        <div id="vcomments"></div>
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: 派大星 | Theme By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="">
+<input type="hidden" id="valine_appKey" value="">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

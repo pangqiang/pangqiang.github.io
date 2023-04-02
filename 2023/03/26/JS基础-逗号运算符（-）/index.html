@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        派大星
+    </title>
+    <meta name="description" content= 嘿，我是派大星，欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,刘训灼,LiuXunzhuo >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            JS基础-逗号运算符（,）
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h2 id="JS基础-逗号运算符（-）"><a href="#JS基础-逗号运算符（-）" class="headerlink" title="JS基础-逗号运算符（,）"></a>JS基础-逗号运算符（,）</h2><p>今天在在逛知乎时候，看到一个问题</p>
+<blockquote>
+<p>有哪些短小却令人惊叹的 JavaScript 代码？</p>
+</blockquote>
+<p>文章中有一个回答：统计字符串中相同字符出现的次数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="string">&#x27;abcdaabc&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> info = arr</span><br><span class="line">    .<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    .<span class="title function_">reduce</span>(<span class="function">(<span class="params">p, k</span>) =&gt;</span> (p[k]++ || (p[k] = <span class="number">1</span>), p), &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(info); <span class="comment">//&#123; a: 3, b: 2, c: 2, d: 1 &#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>写过JS的同学都知道<code>split</code> <code>reduce</code> 都是常用的数组方法，这段代码奇妙的地方就在与 <code>(p[k] = 1), p)</code> 中的<br>逗号运算符。</p>
+<h3 id="逗号运算符的定义"><a href="#逗号运算符的定义" class="headerlink" title="逗号运算符的定义"></a>逗号运算符的定义</h3><p>我们先来看MDN对逗号运算符的定义</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Comma_Operator">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Comma_Operator</a><br>逗号（,）运算符对它的每个操作数从左到右求值，并返回最后一个操作数的值。这让你可以创建一个复合表达式，其中多个表达式被评估，复合表达式的最终值是其成员表达式中最右边的值。</p>
+</blockquote>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><blockquote>
+<p>expr1, expr2, expr3&#x2F;<em>, …</em>&#x2F;</p>
+</blockquote>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><blockquote>
+<p>一个或多个表达式，最后一个表达式的返回值会作为当前复合表达式的值。</p>
+</blockquote>
+<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><blockquote>
+<p>当你想要在期望一个表达式的位置包含多个表达式时，可以使用逗号运算符。这个运算符最常用的一种情况是：在 for 循环中提供多个参数。<br>逗号运算符与数组、对象和函数参数中的逗号含义完全不同。</p>
+</blockquote>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><blockquote>
+<p>假设 a 是一个二维数组，每一维度包含 10 个元素，以下代码通过使用逗号运算符，可以同时递增 i 和递减 j。<br>下面的代码打印一个二维数组中斜线方向的元素：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, j = <span class="number">9</span>; i &lt;= <span class="number">9</span>; i++, j--) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`a[<span class="subst">$&#123;i&#125;</span>][<span class="subst">$&#123;j&#125;</span>] = <span class="subst">$&#123;a[i][j]&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>处理后返回</p>
+<blockquote>
+<p>另一个使用逗号运算符的例子是在返回值前处理一些操作。如前所述，逗号运算符只会返回最后一个元素，但其他表达式都会被求值。所以，可以这么做：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">myFunc</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> x = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (x += <span class="number">1</span>, x); <span class="comment">// 与 return ++x; 等价</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>该回答中，和MDN 中举例的 “处理后返回” 中的示例代码道理是一致的，下面我们详细分析</p>
+<p>首先我们将函数以我们大多数时候会写出的代码，重写一下，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> info = arr</span><br><span class="line">    .<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    .<span class="title function_">reduce</span>(<span class="keyword">function</span>(<span class="params">p,k</span>)&#123;</span><br><span class="line">      <span class="comment">// k 表示当前操作的元素 </span></span><br><span class="line">      <span class="keyword">if</span>(p[k])&#123;</span><br><span class="line">        p[k]++</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        p[k]=<span class="number">1</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> p</span><br><span class="line">    &#125;,&#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中，if表达式可以使用三元表达式简写，因为我们可以修改上述代码为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> info = arr</span><br><span class="line">    .<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    .<span class="title function_">reduce</span>(<span class="keyword">function</span>(<span class="params">p,k</span>)&#123;</span><br><span class="line">      <span class="comment">// k 表示当前操作的元素 </span></span><br><span class="line">      p[k]++ || (p[k]=<span class="number">1</span>)</span><br><span class="line">      <span class="keyword">return</span> p</span><br><span class="line">    &#125;,&#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式中，由于逗号运算符只会返回最后一个元素，但其他表达式都会被求值。 我们可以使用逗号表达式改写为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> info = arr</span><br><span class="line">    .<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    .<span class="title function_">reduce</span>(<span class="keyword">function</span>(<span class="params">p,k</span>)&#123;</span><br><span class="line">      <span class="comment">// k 表示当前操作的元素 </span></span><br><span class="line">      <span class="keyword">return</span> ( p[k]++||(p[k]=<span class="number">1</span>), p)  <span class="comment">// 等价于p[k]++ || ( p[k]=1) return p</span></span><br><span class="line"> </span><br><span class="line">    &#125;,&#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>最后，我们将内联函数的形式改为箭头函数,省略return，便得到了最终代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> info = arr</span><br><span class="line">.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">.<span class="title function_">reduce</span>(</span><br><span class="line">  <span class="function">(<span class="params">p,k</span>) =&gt;</span> (p[k]++||(p[k]=<span class="number">1</span>),p),</span><br><span class="line">  &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+        <hr class="fhr">
+        <div id="vcomments"></div>
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: 派大星 | Theme By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="">
+<input type="hidden" id="valine_appKey" value="">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
