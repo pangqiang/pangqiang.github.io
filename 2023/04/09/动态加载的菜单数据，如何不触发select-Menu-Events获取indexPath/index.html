@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        派大星
+    </title>
+    <meta name="description" content= 嘿，我是派大星，欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,刘训灼,LiuXunzhuo >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/gruvbox-dark.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            ElementUI menu组件手动获取indexPath
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h2 id="动态加载的菜单数据，如何不触发select-Menu-Events获取indexPath"><a href="#动态加载的菜单数据，如何不触发select-Menu-Events获取indexPath" class="headerlink" title="动态加载的菜单数据，如何不触发select Menu Events获取indexPath"></a>动态加载的菜单数据，如何不触发select Menu Events获取indexPath</h2><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>业务开发中，需要实现一个右键在新页面打开当前所选菜单功能，并且新页面打开后，需要高亮选中之前右键点击的那个菜单。因为菜单可配置，数量无法预估，因此菜单的加载被设计成动态加载，触发条件为鼠标移入当前父级菜单才会去加载子级菜单，由此，也导致新打开的页面，菜单并没有子数据，所以就算是我们记录了之前点击的具体的某一次子菜单，我们也无法选中，想要选中，必须某一级的菜单链上的菜单数据在页面加载完成时，菜单数据也需要被加载，蠢办法是菜单数据在请求时全量加载，但显然不，这不是一个优雅的解决办法（:</p>
+<p>那么比较优雅的解决办法是什么呢？</p>
+<p>答案是：回显选中，我们只需要 <strong>所选菜单整个链上</strong> 的数据即可，也就是<code>indexpath</code>记录的数组中的对应的菜单数据。</p>
+<p>那么我们就需要知道某一个选中的菜单<code>indexPath</code>,通常indexpath的值是每一级数据的ID，例如[1xxxx, 2xxxx, 3xxxx], 我们通过后台接口，查出整个indexPath链上的数据。</p>
+<h2 id="如何获取indexPath？"><a href="#如何获取indexPath？" class="headerlink" title="如何获取indexPath？"></a>如何获取<code>indexPath</code>？</h2><p>Element 的menu组件中  Menu Events 板块中，提供了 <code>select</code> 事件，我们在点击菜单时候，会触发<code>select</code> 事件，回调参数中的第二个参数便是<code>indexpath</code>，但是，我们右键点击菜单时，并不会触发<code>select</code> ，那么如何在右键点击时候获取到 <code>indexpath</code>呢？</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://element-plus.gitee.io/zh-CN/component/menu.html#menu-events">https://element-plus.gitee.io/zh-CN/component/menu.html#menu-events</a></p>
+</blockquote>
+<p><img src="/../img/menu.png" alt="image"></p>
+<p>通常 ，我们可能会想到，在右键点击的时候，去主动触发一次左键点击事件，但是一般情况，我们左键点击都绑定着具体的业务逻辑，我们手动触发，势必是要在左键触发的逻辑中做适配，否则就会影响原有逻辑，我们希望的是能不影响任何原有逻辑的情况，有一个单纯获取<code>indexpath</code>的方法，方法如下 （来自ElementUI源码）：</p>
+<p>组合式写法如下，基于setup</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> indexPath = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> parent = instance.<span class="property">parent</span>!</span><br><span class="line">  <span class="keyword">const</span> path = [currentIndex.<span class="property">value</span>]</span><br><span class="line">  <span class="keyword">while</span> (parent.<span class="property">type</span>.<span class="property">name</span> !== <span class="string">&#x27;ElMenu&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (parent.<span class="property">props</span>.<span class="property">index</span>) &#123;</span><br><span class="line">      path.<span class="title function_">unshift</span>(parent.<span class="property">props</span>.<span class="property">index</span> <span class="keyword">as</span> <span class="built_in">string</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    parent = parent.<span class="property">parent</span>!</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> path</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>选项式写法如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> indexPath = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> parent = instance.<span class="property">$parent</span> <span class="comment">// instance 为当前组件，options写法中，通过 this.$refs 获取</span></span><br><span class="line">  <span class="keyword">const</span> path = [currentIndex] <span class="comment">// currentIndex 为当前点击的菜单的 index</span></span><br><span class="line">  <span class="keyword">while</span> (parent.<span class="property">$options</span>.<span class="property">name</span> !== <span class="string">&#x27;ElMenu&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (parent.<span class="property">$options</span>.<span class="property">index</span>) &#123;</span><br><span class="line">      path.<span class="title function_">unshift</span>(parent.<span class="property">$options</span>.<span class="property">index</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    parent = parent.<span class="property">$parent</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> path</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+        <hr class="fhr">
+        <div id="vcomments"></div>
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: 派大星 | Theme By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="">
+<input type="hidden" id="valine_appKey" value="">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

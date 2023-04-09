@@ -130,8 +130,7 @@ hr {
   margin: auto;
 }
 p {
-  font-size: 18px;
-  font-weight: 8000;
+  font-size: 16px;
 }
 li {
   font-size: 17px;
@@ -481,7 +480,7 @@ a {
 .post-content code,
 .post-content pre {
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-  font-size: 12px;
+  font-size: 16px;
 }
 .post-content pre {
   margin-bottom: 0;
@@ -719,13 +718,13 @@ a {
   padding-right: 20px;
 }
 .post-content code {
-  background-color: #28559c;
+  background-color: #f6f6f7;
   border-radius: 3px;
   font-size: 85%;
   margin: 0;
-  padding: 0.2em 0.4em;
-  color: #fff;
-  vertical-align: text-top;
+  padding: 3px 6px;
+  color: #24292e;
+  vertical-align: middle;
 }
 .post-content pre {
   word-wrap: normal;
