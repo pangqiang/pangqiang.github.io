@@ -16,7 +16,7 @@ tags: ElementUI技巧
 
 那么我们就需要知道某一个选中的菜单`indexPath`,通常indexpath的值是每一级数据的ID，例如[1xxxx, 2xxxx, 3xxxx], 我们通过后台接口，查出整个indexPath链上的数据。
 
-## 如何获取`indexPath`？
+## 如何获取 indexPath？
 
 Element 的menu组件中  Menu Events 板块中，提供了 `select` 事件，我们在点击菜单时候，会触发`select` 事件，回调参数中的第二个参数便是`indexpath`，但是，我们右键点击菜单时，并不会触发`select` ，那么如何在右键点击时候获取到 `indexpath`呢？
 
