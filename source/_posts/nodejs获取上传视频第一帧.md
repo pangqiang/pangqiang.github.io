@@ -1,3 +1,7 @@
+---
+title: NodeJS截取视频第一帧
+tags: JS
+---
 # NodeJS截取视频第一帧
 
 ```jsx
