@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2023/04/10/nodejs%E8%8E%B7%E5%8F%96%E4%B8%8A%E4%BC%A0%E8%A7%86%E9%A2%91%E7%AC%AC%E4%B8%80%E5%B8%A7/"/>
+      <url>/2023/04/10/nodejs%E8%8E%B7%E5%8F%96%E4%B8%8A%E4%BC%A0%E8%A7%86%E9%A2%91%E7%AC%AC%E4%B8%80%E5%B8%A7/</url>
+      
+        <content type="html"><![CDATA[<p>const express &#x3D; require(‘express’);<br>const app &#x3D; express();<br>const multer &#x3D; require(‘multer’);<br>const ffmpegPath &#x3D; require(‘@ffmpeg-installer&#x2F;ffmpeg’).path;<br>const ffmpeg &#x3D; require(‘fluent-ffmpeg’);<br>const path &#x3D; require(‘path’);</p><p>&#x2F;&#x2F; 设置ffmpeg的路径<br>ffmpeg.setFfmpegPath(ffmpegPath);</p><p>&#x2F;&#x2F; 设置上传文件的存储位置<br>const storage &#x3D; multer.diskStorage({<br>  destination: (req, file, cb) &#x3D;&gt; {<br>    cb(null, ‘.&#x2F;uploads’); &#x2F;&#x2F; 上传的文件存储在 uploads 目录中<br>  },<br>  filename: (req, file, cb) &#x3D;&gt; {<br>    cb(null, file.fieldname + ‘-‘ + Date.now() + path.extname(file.originalname)); &#x2F;&#x2F; 给上传的文件命名<br>  }<br>});</p><p>&#x2F;&#x2F; 创建上传中间件<br>const upload &#x3D; multer({ storage });</p><p>&#x2F;&#x2F; 定义接口，使用upload中间件解析上传的文件<br>app.post(‘&#x2F;upload’, upload.single(‘video’), (req, res) &#x3D;&gt; {<br>  &#x2F;&#x2F; 获取上传的视频文件的路径<br>  const videoPath &#x3D; req.file.path;</p><p>  &#x2F;&#x2F; 调用FFmpeg的ffprobe命令获取视频信息<br>  ffmpeg.ffprobe(videoPath, (err, metadata) &#x3D;&gt; {<br>    if (err) {<br>      console.error(err);<br>      return;<br>    }</p><pre><code>// 获取视频的第一帧const screenshotPath = &#39;./uploads/screenshot.jpg&#39;;ffmpeg(videoPath)  .screenshots(&#123;    count: 1,    folder: &#39;./uploads&#39;,    filename: &#39;screenshot-%i.jpg&#39;,    size: metadata.streams[0].resolution,  &#125;)  .on(&#39;end&#39;, () =&gt; &#123;    console.log(&#39;截取第一帧成功&#39;);    // 将视频文件路径和封面图路径返回给前端    res.json(&#123;      videoPath,      screenshotPath    &#125;);  &#125;)  .on(&#39;error&#39;, (err) =&gt; &#123;    console.error(&#39;截取第一帧失败：&#39;, err);    res.status(500).json(&#123;      message: &#39;截取第一帧失败&#39;    &#125;);  &#125;);</code></pre><p>  });<br>});</p><p>&#x2F;&#x2F; 启动服务器<br>app.listen(3000, () &#x3D;&gt; {<br>  console.log(‘服务器已启动’);<br>});</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ElementUI menu组件手动获取indexPath</title>
       <link href="/2023/04/09/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E7%9A%84%E8%8F%9C%E5%8D%95%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%A6%82%E4%BD%95%E4%B8%8D%E8%A7%A6%E5%8F%91select-Menu-Events%E8%8E%B7%E5%8F%96indexPath/"/>
       <url>/2023/04/09/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E7%9A%84%E8%8F%9C%E5%8D%95%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%A6%82%E4%BD%95%E4%B8%8D%E8%A7%A6%E5%8F%91select-Menu-Events%E8%8E%B7%E5%8F%96indexPath/</url>
