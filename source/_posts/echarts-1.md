@@ -1,3 +1,7 @@
+---
+title: echart异形柱状图
+tags: JS
+---
 ```
 <!DOCTYPE html>
 <html>
