@@ -83,17 +83,17 @@ valine:
   avatar: mm # avatar style https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
   placeholder: hello, world # comment box placeholder
 gitment:
-  enable: true
+  enable: false
   owner: 'pangqiang'
   repo: 'pangqiang.github.io'
   client_id: 'bcdb11adf7c354a93900'
   client_secret: 'cb55fb6b68afba75fae23ee9786c808df1868636'
 gitalk:
-  enable: false
+  enable: true
   owner: 'pangqiang'
-  repo: '存储评论的 repo'
-  client_id: '你的 client ID'
-  client_secret: '你的 client secret'
+  repo: 'pangqiang.github.io'
+  client_id: 'bcdb11adf7c354a93900'
+  client_secret: 'cb55fb6b68afba75fae23ee9786c808df1868636'
 # 百度统计设置
 # 请访问 https://tongji.baidu.com/ 
 # 获取统计JS代码放入 Anatolo/source/js/baidu-tongji.js
