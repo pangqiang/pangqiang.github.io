@@ -3,6 +3,11 @@ title: 用WebSocket和NodeJs实现一个本地聊天功能
 date: 2023-05-01 23:10:55
 tags:
 ---
+
+## 效果演示
+
+![alt text](../img/chat.gif)
+
 ## WebSocket 是什么？
 >
 > <https://developer.mozilla.org/en-US/docs/Web/API/WebSocket>
@@ -216,6 +221,3 @@ httpServer.listen(3000, () => {
 });
 ```
 
-## 运行结果
-
-![alt text](../img/chat.png)
