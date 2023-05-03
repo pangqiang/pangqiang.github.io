@@ -12,7 +12,7 @@ logo_dir: /images/logo@2x.webp
 logo_style: width:220px;
 
 copyright:
-  show: true
+  show: false
   default: "一蓑烟雨任生平"
   show_author: true
 
