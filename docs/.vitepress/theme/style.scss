@@ -1,0 +1,18 @@
+body {
+  @font-face {
+    font-family: "HarmonyOS_light";
+    src: url("./HarmonyOS_Sans/HarmonyOS_Sans_SC_Light.ttf");
+  }
+  @font-face {
+    font-family: "HarmonyOS_regular";
+    src: url("./HarmonyOS_Sans/HarmonyOS_Sans_SC_Regular.ttf");
+  }
+  @font-face {
+    font-family: "HarmonyOS_medium";
+    src: url("./HarmonyOS_Sans/HarmonyOS_Sans_SC_Medium.ttf");
+  }
+
+}
+:root{
+  --vp-font-family-base:'HarmonyOS_regular'
+}
