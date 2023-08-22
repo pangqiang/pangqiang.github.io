@@ -3,8 +3,11 @@ Thumbs.db
 db.json
 *.log
 node_modules/
-public/
 .deploy*/
 _multiconfig.yml
 docs/.vitepress/cache
 docs/.vitepress/dist/*
+/.idea/modules.xml
+/.idea/vcs.xml
+/docs/public/robots.txt
+/.idea/pangqiang.github.io.iml
