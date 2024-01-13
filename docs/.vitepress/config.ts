@@ -34,18 +34,13 @@ export default defineConfig({
         'MIT Licensed | <a target="_blank" href="https://theme.sugarat.top/"> @sugarat/theme </a>'
     },
     logo: '/0806_2.jpg',
-    // editLink: {
-    //   pattern:
-    //     'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
-    //   text: '去 GitHub 上编辑内容'
-    // },
     nav: [
       { text: '首页', link: '/' },
     ],
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/ATQQ/sugar-blog/tree/master/packages/theme'
+        link: 'https://github.com/'
       }
     ]
   }
