@@ -14,5 +14,9 @@ body {
 
 }
 :root{
-  --vp-font-family-base:'HarmonyOS_regular'
+  --vp-font-family-base:'HarmonyOS_medium';
+  --box-shaow: '0 1px 8px 0 rgba(171,179,191,.6)'
+}
+.title{
+  font-size: 14px;
 }
