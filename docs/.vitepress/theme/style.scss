@@ -13,10 +13,21 @@ body {
   }
 
 }
-:root{
+:root {
   --vp-font-family-base:'HarmonyOS_medium';
-  --box-shaow: '0 1px 8px 0 rgba(171,179,191,.6)'
+  --box-shaow: '0 1px 8px 0 rgba(171,179,191,.6)';
 }
-.title{
-  font-size: 14px;
+.VPNav {
+  background: rgba(250,255,255,.5);
+  backdrop-filter: saturate(180%) blur(20px);
 }
+#app .header-banner {
+  padding: 40px 0;
+}
+.info-container .title {
+  font-size: 16px;
+}
+.VPHome {
+  background: radial-gradient(ellipse, rgba(var(--bg-gradient-home), 1) 0%, rgba(var(--bg-gradient-home), 0) 300%);
+}
+
