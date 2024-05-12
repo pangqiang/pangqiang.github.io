@@ -1,9 +1,5 @@
 body {
   @font-face {
-    font-family: "HarmonyOS_light";
-    src: url("./HarmonyOS_Sans/HarmonyOS_Sans_SC_Light.ttf");
-  }
-  @font-face {
     font-family: "HarmonyOS_regular";
     src: url("./HarmonyOS_Sans/HarmonyOS_Sans_SC_Regular.ttf");
   }
@@ -14,7 +10,7 @@ body {
 
 }
 :root {
-  --vp-font-family-base:'HarmonyOS_medium';
+  --vp-font-family-base: HarmonyOS_regular,monospace;
   --box-shaow: '0 1px 8px 0 rgba(171,179,191,.6)';
 }
 .VPNav {
