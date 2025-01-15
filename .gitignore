@@ -11,3 +11,5 @@ docs/.vitepress/dist/*
 /.idea/vcs.xml
 /docs/public/robots.txt
 /.idea/pangqiang.github.io.iml
+.idea
+.vitepress
