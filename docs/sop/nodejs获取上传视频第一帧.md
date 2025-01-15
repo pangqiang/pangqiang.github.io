@@ -1,10 +1,10 @@
 ---
 title: NodeJS截取视频第一帧
-tags: JS
+tags: ['JS']
 ---
 # NodeJS截取视频第一帧
 
-```jsx
+```js
 const express = require('express');
 const app = express();
 const multer = require('multer');
@@ -71,4 +71,5 @@ app.post('/upload', upload.single('video'), (req, res) => {
 app.listen(3000, () => {
   console.log('服务器已启动');
 });
+
 ```

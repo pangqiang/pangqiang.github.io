@@ -2,7 +2,7 @@
 layout: home
 # 首页部分元素定制
 blog:
- name: '派大星'
+ name: '多崎造有颜色'
  motto: 技术记录
  inspiring:
   - 归去，也无风雨也无晴
