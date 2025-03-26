@@ -22,7 +22,7 @@ export default defineConfig({
   vite: {
     optimizeDeps: {
       include: ['element-plus'],
-      exclude: ['@sugarat/theme']
+      exclude: ['@sugarat/theme','vitepress-plugin-mermaid']
     }
   },
   lastUpdated: true,
