@@ -25,7 +25,6 @@ body {
   .blog-item {
     .title>span {
       &:hover {
-        color: hsl(222deg 22% 5%);
         text-decoration: underline;
         text-decoration-thickness: 2px;
         text-underline-offset: 2px;
