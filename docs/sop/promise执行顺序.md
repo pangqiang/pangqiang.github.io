@@ -1,9 +1,8 @@
 ---
-title: Promise 执行顺序
+title: "Promise 执行顺序"
 date: 2025-03-29 23:31:23
 tags: ['Promise']
 ---
-
 ## Promise 执行顺序
 以下代码的输出顺序?
 ```javascript
