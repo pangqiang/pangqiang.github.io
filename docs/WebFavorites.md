@@ -5,7 +5,7 @@ tags: ['技术收藏']
 ---
 
 # 常用网址
-[Canvas API中文文档首页地图](https://https://www.canvasapi.cn/)
+[Canvas API中文文档首页地图](https://www.canvasapi.cn/)
 ## From cubox [cubox](https://cubox.pro/my/all)
 1. [GitHub - ui-layouts/cursify: Cursor Animation Library for React & Next.js](https://github.com/ui-layouts/cursify)
 2. [Copy Web Design to Code | CopyWeb](https://copyweb.ai/)
