@@ -1,5 +1,7 @@
 ---
 layout: page
+sidebar: false
+
 # 首页部分元素定制
 ---
 

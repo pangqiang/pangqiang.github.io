@@ -1,6 +1,7 @@
 ---
-title: "常用网址"
-tags: ['常用网址']
+sidebar: false
+title: "技术收藏"
+tags: ['技术收藏']
 ---
 
 # 常用网址
