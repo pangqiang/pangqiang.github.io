@@ -37,6 +37,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '我', link: '/me.html'},
+      { text: '常用网站', link: '/WebFavorites.html'},
     ],
     socialLinks: [
       {
