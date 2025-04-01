@@ -35,4 +35,116 @@ body {
     --box-shadow: none;
     --box-shadow-hover: none;
   }
+  .card {
+    --box-shadow: none;
+    --box-shadow-hover: none;
+    border-radius: 12px;
+    border: 1px solid #8f99a82e;
+    background-color: #ffffff1a;
+    backdrop-filter: blur(10px);
+  }
+  .card:first-child {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius:12px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+  }
+  
+  /* 彩色光晕效果 */
+  .card::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 60%;
+    height: 8px;
+    background: radial-gradient(circle, rgba(255, 0, 150, 0.4), rgba(0, 255, 255, 0.3), transparent);
+    filter: blur(10px);
+    transform: translateX(-50%);
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* 暗黑模式适配 */
+  @media (prefers-color-scheme: dark) {
+    .card {
+      background: #121212;
+    }
+  }
+}
+// 暗黑模式适配
+.dark .card {
+  background-color: #121212;
+  border: 1px solid #8f99a82e;
+  backdrop-filter: blur(10px);
+}
+
+:root {
+  /* 主要标签色（蓝色 - 适用于主分类） */
+  --el-color-primary: #5D7E9D; /* 暮蓝 */
+  --el-color-primary-light-3: #6F93B3;
+  --el-color-primary-light-5: #7FA3C3;
+  --el-color-primary-light-7: #A3BDD9;
+  --el-color-primary-light-8: #C5D8EC;
+  --el-color-primary-light-9: #E1EEF7;
+  --el-color-primary-dark-2: #3F5E7A;
+
+  /* 成功标签色（绿色 - 适用于 JS/优化类标签） */
+  --el-color-success: #7A9E5A; /* 柔和橄榄绿 */
+  --el-color-success-light-3: #92B06F;
+  --el-color-success-light-5: #A8C58B;
+  --el-color-success-light-7: #C8DEB0;
+  --el-color-success-light-8: #DDE8CA;
+  --el-color-success-light-9: #EEF4E5;
+  --el-color-success-dark-2: #597841;
+
+  /* 警告标签色（黄色 - 适用于性能类） */
+  --el-color-warning: #C8A642; /* 低饱和金色 */
+  --el-color-warning-light-3: #D3B55A;
+  --el-color-warning-light-5: #DFC973;
+  --el-color-warning-light-7: #EBD98C;
+  --el-color-warning-light-8: #F5E4A5;
+  --el-color-warning-light-9: #FDF7D1;
+  --el-color-warning-dark-2: #A38632;
+
+  /* 危险标签色（红色 - 适用于算法类） */
+  --el-color-danger: #D35C4D; /* 深珊瑚红 */
+  --el-color-danger-light-3: #DE7568;
+  --el-color-danger-light-5: #E98F84;
+  --el-color-danger-light-7: #F3A9A0;
+  --el-color-danger-light-8: #F7C0BA;
+  --el-color-danger-light-9: #FDE3E0;
+  --el-color-danger-dark-2: #B5473A;
+
+  /* 信息标签色（灰色 - 适用于通用类） */
+  --el-color-info: #5F6368; /* 温暖灰 */
+  --el-color-info-light-3: #75797D;
+  --el-color-info-light-5: #8C9094;
+  --el-color-info-light-7: #A2A6AA;
+  --el-color-info-light-8: #BABDC1;
+  --el-color-info-light-9: #D2D5D9;
+  --el-color-info-dark-2: #46494D;
+}
+
+/* 确保 el-tag 使用新的变量 */
+.el-tag {
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* 暗黑模式优化 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --el-color-primary: #4C647E; /* 深蓝 */
+    --el-color-success: #6A8B50; /* 深绿 */
+    --el-color-warning: #B39134; /* 深金色 */
+    --el-color-danger: #B94E40; /* 深红 */
+    --el-color-info: #44484D; /* 深灰 */
+  }
 }
