@@ -8,8 +8,10 @@ body {
     src: url("./HarmonyOS_Sans/HarmonyOS_Sans_SC_Medium.ttf");
   }
 }
+
 :root {
-  --vp-font-family-base: HarmonyOS_regular,monospace;
+  --vp-font-family-base: -apple-system, BlinkMacSystemFont, "PingFang SC", "HarmonyOS_regular", "Helvetica Neue", Roboto, sans-serif;
+  --vp-font-family-mono: 'Fira Code', 'Consolas', 'Courier New', monospace;
 }
 
 .VPNav {
