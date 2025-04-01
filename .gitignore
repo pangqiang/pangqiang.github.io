@@ -6,10 +6,9 @@ node_modules/
 .deploy*/
 _multiconfig.yml
 docs/.vitepress/cache
-docs/.vitepress/dist/*
+docs/.vitepress/dist
 /.idea/modules.xml
 /.idea/vcs.xml
 /docs/public/robots.txt
 /.idea/pangqiang.github.io.iml
 .idea
-.vitepress
