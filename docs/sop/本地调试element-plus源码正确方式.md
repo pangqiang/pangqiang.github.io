@@ -3,7 +3,7 @@ title: 本地调试element-plus源码正确方式
 date: 2023-04-02 17:04:12
 tags: 坑
 ---
-## 本地调试 element-plus 的源码，可以按照以下步骤进行
+# 本地调试 element-plus 的源码，可以按照以下步骤进行
 
 ### element-plus使用 yarn 和 pnpm 管理代码，已安装，直接执行第三步。未安装, 请先安装yarn 和 pnpm
 

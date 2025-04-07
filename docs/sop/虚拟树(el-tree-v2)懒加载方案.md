@@ -4,7 +4,7 @@ date: 2025-1-19 00:07:00
 tags: ['el-tree-v2','性能']
 ---
 
-## 虚拟树(el-tree-v2)懒加载demo
+# 虚拟树(el-tree-v2)局部懒加载
 
 ```vue
 <template>

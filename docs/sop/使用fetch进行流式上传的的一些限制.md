@@ -4,6 +4,8 @@
   "editLink": true,
 }
 ---
+# 使用fetch进行流式上传的的一些限制
+
 
 <span data-type="text" style="font-size: 24px;">fetch发送post请求，当body体传输类型为“stream”时，浏览器报错：</span>
 

@@ -3,6 +3,7 @@ title: NodeJS截取视频第一帧
 date: 2025-01-16 00:07:00
 tags: ['JS']
 ---
+# NodeJS截取视频第一帧
 
 ```js
 const express = require('express');

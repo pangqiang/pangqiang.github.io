@@ -4,7 +4,7 @@ date: 2024-09-21 22:30
 tags: ['开发体验']
 ---
 
-## VScode配置
+# VScode配置
 
 
 ```json5
