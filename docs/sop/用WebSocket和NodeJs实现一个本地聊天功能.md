@@ -1,7 +1,7 @@
 ---
 title: 用WebSocket和NodeJs实现一个本地聊天功能
 date: 2023-05-01 23:10:55
-tags:
+tags: ['WebSocket', 'NodeJs', 'Vue']
 ---
 # 用WebSocket和NodeJs实现一个本地聊天功能
 ## 效果演示

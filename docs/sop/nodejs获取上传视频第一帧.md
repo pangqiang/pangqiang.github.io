@@ -1,7 +1,7 @@
 ---
 title: NodeJS截取视频第一帧
 date: 2025-01-16 00:07:00
-tags: ['JS']
+tags: ['NodeJS']
 ---
 # NodeJS截取视频第一帧
 

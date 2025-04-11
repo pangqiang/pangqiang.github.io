@@ -1,7 +1,7 @@
 ---
 title: JS任意进制之间的转换
 date: 2023-03-11 15:31:23
-tags: JS
+tags: ['JavaScript']
 ---
 # JavaScript 进制转换
 

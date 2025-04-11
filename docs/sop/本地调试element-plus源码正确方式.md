@@ -1,7 +1,7 @@
 ---
 title: 本地调试element-plus源码正确方式
 date: 2023-04-02 17:04:12
-tags: 坑
+tags: ['element-plus', '调试']
 ---
 # 本地调试 element-plus 的源码，可以按照以下步骤进行
 

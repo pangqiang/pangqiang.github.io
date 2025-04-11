@@ -1,7 +1,7 @@
 ---
 title: JS基础-逗号运算符（,）
 date: 2023-03-26 20:56:26
-tags: JS基础
+tags: ['JavaScript']
 ---
 
 # JS基础-逗号运算符（,）

@@ -1,7 +1,7 @@
 ---
 title: ElementUI menu组件手动获取indexPath
 date: 2023-04-09 21:23:33
-tags: ElementUI技巧
+tags: ['elment-plus', '技巧' ]
 ---
 
 # 动态加载的菜单数据，如何不触发select Menu Events获取indexPath

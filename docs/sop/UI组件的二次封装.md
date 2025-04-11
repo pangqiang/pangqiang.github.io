@@ -1,6 +1,6 @@
 ---
 title: UI组件的二次封装
-tags: ['tpescript']
+tags: ['Vue3', 'UI组件', '二次封装']
 ---
 
 # UI组件的二次封装
