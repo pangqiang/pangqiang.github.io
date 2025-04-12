@@ -44,5 +44,112 @@ const attrs = useAttrs()
 在上面的代码中，我们使用`useAttrs`来获取父组件传递的属性，然后使用`v-bind="attrs"`来透传属性。
 
 ## 如何透传插槽
+还是以el-input为例，在组件使用时，我们也需要通过`#prepend`，`#prefix`等来传递插槽内容，如下代码：
+组件主要代码
+```ts
+<script setup>
+import { ElInput } from 'element-plus' 
+</script>
+<template>
+  <ElInput>
+    <template #prepend>
+      <slot name="prepend" />
+    </template>
+    <template #prefix>
+      <slot name="prefix" />
+    </template>
+    ...
+  </ElInput>
+```
+组件使用
+```ts
+<template>
+  <my-input>
+    <template #prepend>
+      <span>前缀</span>
+    </template>
+    <template #prefix>
+      <span>后缀</span>
+    </template>
+  </my-input>
+</template>
+``` 
+如果是作用域插槽，则需要传递`scopedata`
 
+```ts
+<script setup>
+import { ElInput } from 'element-plus' 
+</script>
+<template>
+  <ElInput>
+    <template #prepend="scopeData">
+      <slot name="prepend" v-bind="scopeData" />
+    </template>
+    <template #prefix="scopeData">
+      <slot name="prefix" v-bind="scopeData" />
+    </template>
+    ...
+  </ElInput>
+```
+在上面的代码中，我们使用`v-bind="scopeData"`来透传插槽的作用域数据。
+上述代码功能没有问题，但是我们需要在每个插槽中都写一遍`<template #prepend="scopeData">`，这样会导致代码的重复。
+我们可以使用`v-slot`来透传插槽。
+```ts
+<script setup>
+import { ElInput } from 'element-plus'
+import { useSlots } from 'vue'
+const slots = useSlots()
+</script>
+<template>
+  <ElInput v-bind="$attrs">
+    <template v-for="(slot, name) in slots" :key="name" v-slot:[name]="slot">
+      <slot :name="name" v-bind="slot" />
+    </template>
+  </ElInput>
+</template>
+```
+在上面的代码中，我们使用`useSlots`来获取父组件传递的插槽，然后使用`v-for`来遍历插槽，最后使用`v-slot:[name]="slot"`来透传插槽。
+这样就可以避免代码的重复。
 
+## 如何透传ref
+遗憾的是，Vue3并没有提供直接透传ref的方法。我们使用如下办法
+ref + expose 透传组件实例
+```ts
+<script setup>
+import { ElInput } from 'element-plus'
+import { ref } from 'vue'
+const innerRef = ref()
+// 暴露 Element Plus 原组件实例（比如 ElInput）给父组件
+defineExpose({
+  focus: () => innerRef.value?.focus(),
+  blur: () => innerRef.value?.blur(),
+  // 如果想更直接，可以暴露整个实例
+  ...innerRef
+})
+</script>
+
+<template>
+  <ElInput ref="innerRef"/>
+</template>
+```
+
+在父组件中使用
+```ts
+<template>
+  <my-input ref="myInput" />
+</template>
+<script setup>
+import { ref } from 'vue'
+const myInput = ref()
+const focus = () => {
+  myInput.value.focus()
+}
+const blur = () => {
+  myInput.value.blur()
+}
+</script>
+```
+
+## 总结
+在本文中，我们介绍了如何对UI组件进行二次封装。
+我们主要介绍了如何透传属性和事件、透传插槽、透传ref。
