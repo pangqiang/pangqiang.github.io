@@ -10,7 +10,7 @@ tags: ['Vue3', 'UI组件', '二次封装']
 
 本文以elment plus的el-input组件为例，来说明何对UI组件进行更好二次封装。
 首先我们自定义一个组件`myInput`，他的内部对elment plus的el-input进行了二次封装。
-```ts
+```js
 <script setup>
 import { ElInput } from 'element-plus'
 const input = ref('')
@@ -27,10 +27,11 @@ const input = ref('')
 
 通常我们对二次组件进行封装，并不是要完全改变个功能，而是要在原有的基础上进行一些扩展和修改。
 所以我们需要对组件的属性、事件、插槽等进行透传。
+
 ## 透传属性和事件
 透传属性和事件是指将父组件的属性和事件传递给子组件。
 在Vue3中，我们可以使用`v-on="$attrs"`来透传事件。
-```ts
+```js
 <script setup>
 import { ElInput } from 'element-plus'
 import { useAttrs } from 'vue'
@@ -46,7 +47,7 @@ const attrs = useAttrs()
 ## 如何透传插槽
 还是以el-input为例，在组件使用时，我们也需要通过`#prepend`，`#prefix`等来传递插槽内容，如下代码：
 组件主要代码
-```ts
+```js
 <script setup>
 import { ElInput } from 'element-plus' 
 </script>
@@ -60,41 +61,11 @@ import { ElInput } from 'element-plus'
     </template>
     ...
   </ElInput>
-```
-组件使用
-```ts
-<template>
-  <my-input>
-    <template #prepend>
-      <span>前缀</span>
-    </template>
-    <template #prefix>
-      <span>后缀</span>
-    </template>
-  </my-input>
 </template>
-``` 
-如果是作用域插槽，则需要传递`scopedata`
-
-```ts
-<script setup>
-import { ElInput } from 'element-plus' 
-</script>
-<template>
-  <ElInput>
-    <template #prepend="scopeData">
-      <slot name="prepend" v-bind="scopeData" />
-    </template>
-    <template #prefix="scopeData">
-      <slot name="prefix" v-bind="scopeData" />
-    </template>
-    ...
-  </ElInput>
 ```
-在上面的代码中，我们使用`v-bind="scopeData"`来透传插槽的作用域数据。
-上述代码功能没有问题，但是我们需要在每个插槽中都写一遍`<template #prepend="scopeData">`，这样会导致代码的重复。
-我们可以使用`v-slot`来透传插槽。
-```ts
+
+上述代码功能没有问题，但是我们需要在每个插槽中都写一遍`<slot name="xxx" />`，这样会导致代码的重复。我们可以动态生成插槽。
+```js
 <script setup>
 import { ElInput } from 'element-plus'
 import { useSlots } from 'vue'
@@ -108,13 +79,13 @@ const slots = useSlots()
   </ElInput>
 </template>
 ```
-在上面的代码中，我们使用`useSlots`来获取父组件传递的插槽，然后使用`v-for`来遍历插槽，最后使用`v-slot:[name]="slot"`来透传插槽。
-这样就可以避免代码的重复。
+在上面的代码中，我们使用`useSlots`来获取父组件传递的插槽，然后使用`v-for`来遍历插槽，最后使用`v-slot:[name]="slot"`来透传插槽。这样就可以避免代码的重复。
 
 ## 如何透传ref
 遗憾的是，Vue3并没有提供直接透传ref的方法。我们使用如下办法
 ref + expose 透传组件实例
-```ts
+
+```js
 <script setup>
 import { ElInput } from 'element-plus'
 import { ref } from 'vue'
@@ -134,7 +105,7 @@ defineExpose({
 ```
 
 在父组件中使用
-```ts
+```js
 <template>
   <my-input ref="myInput" />
 </template>
