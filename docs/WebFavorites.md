@@ -4,9 +4,11 @@ title: "技术收藏"
 tags: ['技术收藏']
 ---
 
-# 常用网址
-[Canvas API中文文档首页地图](https://www.canvasapi.cn/)
-## From cubox [cubox](https://cubox.pro/my/all)
+## 2025 
+- [Arya - 在线 Markdown 编辑器](https://markdown.lovejade.cn/)
+- [Canvas API中文文档首页地图](https://www.canvasapi.cn/)
+
+## From [cubox](https://cubox.pro/my/all)
 - [ui-layouts/cursify](https://github.com/ui-layouts/cursify)
 - [Copy Web Design to Code | CopyWeb](https://copyweb.ai/)
 - [bolt.new](https://bolt.new/)
