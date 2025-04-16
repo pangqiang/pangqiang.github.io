@@ -8,5 +8,5 @@ blog:
   - 归去，也无风雨也无晴
  # 设置 inspiringTimeout 可以实现自动切换
  inspiringTimeout: 3000
- pageSize: 10
+ pageSize: 5
 ---
