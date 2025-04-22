@@ -1,9 +1,10 @@
 ---
+sticky: 1
 sidebar: false
-title: "技术收藏"
-tags: ['技术收藏']
+hidden: true
 ---
 
+# Web Favorites
 ## 2025 
 - [Arya - 在线 Markdown 编辑器](https://markdown.lovejade.cn/)
 - [Canvas API中文文档首页地图](https://www.canvasapi.cn/)

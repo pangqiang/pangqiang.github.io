@@ -36,8 +36,9 @@ export default defineConfig({
     logo: '/0806_2.jpg',
     nav: [
       { text: '首页', link: '/' },
-      { text: '我', link: '/me.html'},
-      { text: '技术收藏', link: '/WebFavorites.html'},
+      { text: '我', link: '/me'},
+      { text: '技术收藏', link: '/guide/WebFavorites'},
+      { text: '面试', link: '/front-end-basics/work'},
     ],
     socialLinks: [
       {
