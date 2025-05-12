@@ -5,7 +5,7 @@ title: 前端基础
 # 首页部分元素定制
 ---
 # 面试复盘
-## 2025/05/28
+## 2025/05/08
 
 ### 1. 字符串为什么可以直接使用`length`属性？
 
@@ -33,4 +33,36 @@ const strObj = new String(str); // 创建临时的 String 对象
 console.log(strObj.length); // 5
 delete strObj; // 删除临时对象
 
+```
+
+## 2025/05/12
+记录答的不太好的题目（基础八股文系列）
+
+### 1. 事件冒泡和事件捕获的区别
+dom事件的传播有两个阶段：事件捕获和事件冒泡。
+1. **捕获阶段**：
+从 `window` → `document` → 外层元素 → 一直到目标元素的父元素，逐层向下传播。
+2. **目标阶段**：
+事件到达 目标元素，即实际触发事件的那个元素。
+3. **冒泡阶段**：
+从目标元素 → 目标元素的父元素 → 一直到 `window`，逐层向上传播。
+
+
+在 JavaScript 中使用 addEventListener 时的第三个参数控制事件触发阶段：
+
+>  `capture` 一个布尔值，表示 listener 会在该类型的事件捕获阶段传播到该 EventTarget 时触发。
+详见：
+ https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener#options
+
+```
+element.addEventListener('click', handler, true);  // 捕获阶段触发
+element.addEventListener('click', handler, false); // 冒泡阶段触发（默认）
+
+```
+#### 如何阻止事件冒泡？
+在事件处理函数中调用 `event.stopPropagation()` 方法可以阻止事件继续向上冒泡。
+```javascript
+element.addEventListener('click', function(event) {
+  event.stopPropagation(); // 阻止事件冒泡
+});
 ```
