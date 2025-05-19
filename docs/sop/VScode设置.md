@@ -1,7 +1,7 @@
 ---
 title: VScode配置
 date: 2024-09-21 22:30
-tags: ['开发体验']
+tags: ['开发配置']
 ---
 
 # VScode配置
